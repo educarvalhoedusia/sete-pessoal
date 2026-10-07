@@ -1,0 +1,128 @@
+/* ===== Variáveis: para mudar a cor de destaque, altere só --destaque ===== */
+:root {
+  --destaque: #2563eb;        /* cor de destaque (azul) */
+  --destaque-escuro: #1d4ed8; /* versão mais escura, usada ao passar o mouse */
+  --texto: #1f2937;           /* cor do texto principal */
+  --texto-suave: #4b5563;     /* cor de textos secundários */
+  --fundo: #f9fafb;           /* fundo da página */
+  --branco: #ffffff;
+  --borda: #e5e7eb;
+}
+
+/* ===== Base ===== */
+* { box-sizing: border-box; } /* largura inclui padding e borda */
+
+body {
+  margin: 0;
+  /* Fonte do sistema: não precisa baixar nada */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--texto);
+  background: var(--fundo);
+}
+
+/* Centraliza o conteúdo e limita a largura em telas grandes */
+.container { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+
+section { padding: 2.5rem 0 1rem; }
+
+h2 {
+  margin: 0 0 1rem;
+  font-size: 1.6rem;
+  border-left: 5px solid var(--destaque);
+  padding-left: 0.75rem;
+}
+
+/* ===== Cabeçalho ===== */
+.topo {
+  background: var(--destaque);
+  color: var(--branco);
+  padding: 4rem 0;
+  text-align: center;
+}
+.topo h1 { margin: 0 0 0.5rem; font-size: 2.5rem; }
+.frase { margin: 0 0 1.5rem; font-size: 1.15rem; }
+
+/* ===== Botões ===== */
+.botao {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--branco);
+  color: var(--destaque);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Botão dentro do formulário: fundo colorido e texto branco */
+form .botao { background: var(--destaque); color: var(--branco); }
+form .botao:hover { background: var(--destaque-escuro); }
+
+/* ===== Cartões ===== */
+.cartoes {
+  display: grid;
+  gap: 1rem;
+  /* Celular: 1 coluna. Telas maiores: quantas couberem (mín. 250px cada) */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.cartao {
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+.cartao h3 { margin: 0 0 0.5rem; color: var(--destaque); }
+.cartao p { margin: 0; color: var(--texto-suave); }
+
+/* ===== Formulário ===== */
+form {
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+label { display: block; margin: 0 0 0.25rem; font-weight: 600; }
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
+  font: inherit;
+}
+
+/* Destaque visível quando o campo está selecionado */
+input:focus,
+textarea:focus {
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  border-color: var(--destaque);
+}
+
+/* Campo com erro (classe adicionada pelo script.js) */
+.invalido { border-color: #b91c1c; }
+
+/* Mensagem de retorno do formulário */
+#retorno { margin: 1rem 0 0; font-weight: 600; }
+.erro { color: #b91c1c; }    /* vermelho escuro */
+.sucesso { color: #047857; } /* verde escuro */
+
+/* ===== Rodapé ===== */
+.rodape {
+  margin-top: 3rem;
+  padding: 1.5rem 0;
+  text-align: center;
+  color: var(--texto-suave);
+  border-top: 1px solid var(--borda);
+}
+
+/* ===== Telas pequenas (celular) ===== */
+@media (max-width: 600px) {
+  .topo { padding: 3rem 0; }
+  .topo h1 { font-size: 2rem; }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <!-- Faz o site se ajustar à largura da tela do celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eduardo Carvalho | IA para Gestores na Prática</title>
+  <!-- Liga o arquivo de estilos (visual) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CABEÇALHO: nome e frase de apresentação -->
+  <header class="topo">
+    <div class="container">
+      <h1>Eduardo Carvalho</h1>
+      <p class="frase">Ensino gestores a ganhar tempo e reduzir custos aplicando Inteligência Artificial, sem precisar de programação.</p>
+      <a class="botao" href="#contato">Fale comigo</a>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- SEÇÃO SOBRE: um parágrafo curto -->
+    <section id="sobre">
+      <h2>Sobre</h2>
+      <p>
+        Sou especialista em gestão de pessoas, com longa trajetória em
+        desenvolvimento de lideranças e cultura organizacional. No programa
+        "IA para Gestores na Prática", ao lado do Prof. Dr. Eduardo Mendes,
+        mostro como aplicar IA em RH, atendimento e engajamento, conectando
+        tecnologia com o lado humano da gestão.
+      </p>
+    </section>
+
+    <!-- SEÇÃO SERVIÇOS: três cartões (copie um bloco "cartao" para criar outro) -->
+    <section id="servicos">
+      <h2>Modalidades</h2>
+      <div class="cartoes">
+        <article class="cartao">
+          <h3>Presencial (8 semanas)</h3>
+          <p>Um encontro por semana de 3h, em Mococa e São João da Boa Vista, com suporte diário via WhatsApp.</p>
+        </article>
+        <article class="cartao">
+          <h3>On-line ao vivo (6 semanas)</h3>
+          <p>Encontros de 3h às quintas, das 19h às 22h, com professor ao vivo de onde você estiver.</p>
+        </article>
+        <article class="cartao">
+          <h3>Workshop (1 dia)</h3>
+          <p>Oito horas intensivas e práticas para usar IA na rotina da empresa já no dia seguinte.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SEÇÃO CONTATO: formulário validado pelo script.js (nada é enviado) -->
+    <section id="contato">
+      <h2>Contato</h2>
+      <!-- "novalidate" desliga a validação do navegador; quem valida é o nosso script -->
+      <form id="formulario" novalidate>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" autocomplete="name">
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" autocomplete="email">
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+
+        <button type="submit" class="botao">Enviar</button>
+
+        <!-- Aqui o script mostra erros ou a confirmação -->
+        <p id="retorno" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ: o ano é preenchido pelo JavaScript -->
+  <footer class="rodape">
+    <p>&copy; <span id="ano"></span> Eduardo Carvalho · IA para Gestores na Prática. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Liga o arquivo de comportamento (JavaScript) -->
+  <script src="script.js"></script>
+</body>
+</html>
