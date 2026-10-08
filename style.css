@@ -65,7 +65,7 @@ h1, h2, h3 { font-family: var(--serif); line-height: 1.15; margin: 0 0 .6em; fon
   display: grid; place-items: center; text-align: center; font-weight: 600; letter-spacing: .1em;
   border: 2px dashed rgba(197,139,43,.8); border-radius: var(--raio); color: #F2C46D;
 }
-.foto__caixa { aspect-ratio: 4 / 5; max-width: 320px; background: var(--grafite-2); }
+.foto__img { display: block; width: 100%; max-width: 360px; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--raio); border-bottom: 3px solid var(--ambar); }
 
 /* Seções */
 .secao { padding: 72px 0; }
@@ -144,7 +144,7 @@ h1, h2, h3 { font-family: var(--serif); line-height: 1.15; margin: 0 0 .6em; fon
   .container { padding: 0 32px; }
   .topo { padding: 96px 0; }
   .topo__grade { grid-template-columns: 1.4fr 1fr; }
-  .foto__caixa { margin-left: auto; width: 100%; }
+  .foto__img { margin-left: auto; max-width: 420px; }
   .secao { padding: 96px 0; }
   .eixos, .grade-cred { grid-template-columns: repeat(2, 1fr); }
   .livros { grid-template-columns: repeat(4, 1fr); }
