@@ -1,0 +1,7 @@
+name = "eduardo-assistente"
+main = "index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+# Endereços do site que podem usar o chat, separados por vírgula (ajuste para o seu domínio)
+ALLOWED_ORIGINS = "https://COLE-AQUI-O-ENDERECO-DO-SITE.pages.dev"
