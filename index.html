@@ -2,85 +2,222 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <!-- Faz o site se ajustar à largura da tela do celular -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Eduardo Carvalho | IA para Gestores na Prática</title>
-  <!-- Liga o arquivo de estilos (visual) -->
+  <title>Eduardo Carvalho | Palestrante sobre comportamento humano, vendas, liderança e IA</title>
+  <meta name="description" content="Eduardo Carvalho, palestrante internacional e estudioso do comportamento humano. Palestras sobre vendas, liderança e inteligência artificial aplicada. Base em Mococa/SP.">
+  <meta name="theme-color" content="#15171C">
+
+  <!-- Compartilhamento (Open Graph) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Eduardo Carvalho | Palestrante">
+  <meta property="og:description" content="Palestrante internacional e estudioso do comportamento humano. Vendas, liderança e inteligência artificial aplicada.">
+  <meta property="og:site_name" content="Eduardo Carvalho">
+  <meta name="twitter:card" content="summary">
+  <!-- PENDENTE: og:image e og:url (precisam da foto e do endereço final do site) -->
+
+  <!-- Fontes: Fraunces (títulos) e Inter (texto), com fallback para fontes do sistema -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Dados estruturados: Person (somente fatos da lista de evidências) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Eduardo Carvalho",
+    "jobTitle": "Palestrante e mentor",
+    "description": "Palestrante internacional e estudioso do comportamento humano. Diretor da Evolution Brasil, instrutor e mentor da K.L.A Educação Empresarial e fundador do EdusIA Instituto.",
+    "email": "mailto:eduardocarvalho@edusia.com.br",
+    "telephone": "+55-19-99180-8312",
+    "address": { "@type": "PostalAddress", "addressLocality": "Mococa", "addressRegion": "SP", "addressCountry": "BR" },
+    "worksFor": [
+      { "@type": "Organization", "name": "Evolution Brasil" },
+      { "@type": "Organization", "name": "EdusIA Instituto", "url": "https://www.edusiainstituto.com.br" }
+    ],
+    "knowsAbout": ["Comportamento humano", "DISC", "Vendas", "Liderança", "Inteligência artificial aplicada"],
+    "sameAs": [
+      "https://www.linkedin.com/in/eduardo-carvalho-edusia",
+      "https://www.instagram.com/eduardo.carvalho.oficial",
+      "https://www.edusiainstituto.com.br"
+    ]
+  }
+  </script>
 </head>
 <body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- CABEÇALHO: nome e frase de apresentação -->
-  <header class="topo">
-    <div class="container">
-      <h1>Eduardo Carvalho</h1>
-      <p class="frase">Ensino gestores a ganhar tempo e reduzir custos aplicando Inteligência Artificial, sem precisar de programação.</p>
-      <a class="botao" href="#contato">Fale comigo</a>
+  <header class="topo" id="inicio">
+    <div class="container topo__grade">
+      <div class="topo__texto">
+        <p class="sobretitulo">Palestrante · Mentor</p>
+        <h1>Eduardo Carvalho</h1>
+        <p class="posicionamento">Palestrante internacional e estudioso do comportamento humano. Leva ao seu evento vendas, liderança e inteligência artificial aplicada.</p>
+        <div class="acoes">
+          <a class="botao botao--zap" href="https://wa.me/5519991808312" target="_blank" rel="noopener noreferrer">
+            <svg class="icone" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-zap"/></svg>
+            Chamar no WhatsApp
+          </a>
+          <button class="botao botao--claro" type="button" data-abrir-assistente>Falar com o assistente</button>
+        </div>
+      </div>
+      <figure class="foto">
+        <div class="foto__caixa" role="img" aria-label="Espaço reservado para a foto de Eduardo Carvalho">[FOTO]</div>
+      </figure>
     </div>
   </header>
 
-  <main class="container">
+  <main id="conteudo">
 
-    <!-- SEÇÃO SOBRE: um parágrafo curto -->
-    <section id="sobre">
-      <h2>Sobre</h2>
-      <p>
-        Sou especialista em gestão de pessoas, com longa trajetória em
-        desenvolvimento de lideranças e cultura organizacional. No programa
-        "IA para Gestores na Prática", ao lado do Prof. Dr. Eduardo Mendes,
-        mostro como aplicar IA em RH, atendimento e engajamento, conectando
-        tecnologia com o lado humano da gestão.
-      </p>
-    </section>
-
-    <!-- SEÇÃO SERVIÇOS: três cartões (copie um bloco "cartao" para criar outro) -->
-    <section id="servicos">
-      <h2>Modalidades</h2>
-      <div class="cartoes">
-        <article class="cartao">
-          <h3>Presencial (8 semanas)</h3>
-          <p>Um encontro por semana de 3h, em Mococa e São João da Boa Vista, com suporte diário via WhatsApp.</p>
-        </article>
-        <article class="cartao">
-          <h3>On-line ao vivo (6 semanas)</h3>
-          <p>Encontros de 3h às quintas, das 19h às 22h, com professor ao vivo de onde você estiver.</p>
-        </article>
-        <article class="cartao">
-          <h3>Workshop (1 dia)</h3>
-          <p>Oito horas intensivas e práticas para usar IA na rotina da empresa já no dia seguinte.</p>
-        </article>
+    <section class="secao" id="sobre" aria-labelledby="t-sobre">
+      <div class="container estreito">
+        <h2 id="t-sobre"><span class="num">01</span> Quem é Eduardo</h2>
+        <p>Eduardo Carvalho é palestrante internacional e estudioso do comportamento humano. É Diretor da Evolution Brasil e Instrutor e Mentor da K.L.A Educação Empresarial, com formação em Master Coaching (SLAC), PNL, análise comportamental e Inteligência Emocional.</p>
+        <p>Escritor, é autor e coautor de livros sobre empreendedorismo, vendas e comportamento. Estudou criatividade no Instituto Disney, em Orlando (EUA), e oportunidades do varejo na Universidade Babson, em Boston (EUA).</p>
+        <p>Na vida associativa, é Vice-Presidente Executivo da FACESP, Vice-Presidente da Associação Comercial de Mococa e membro do Conselho Estadual de Saúde de SP. É fundador do EdusIA Instituto, que trabalha com DISC e IA aplicada. Sua base é Mococa/SP.</p>
       </div>
     </section>
 
-    <!-- SEÇÃO CONTATO: formulário validado pelo script.js (nada é enviado) -->
-    <section id="contato">
-      <h2>Contato</h2>
-      <!-- "novalidate" desliga a validação do navegador; quem valida é o nosso script -->
-      <form id="formulario" novalidate>
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" autocomplete="name">
-
-        <label for="email">E-mail</label>
-        <input type="email" id="email" name="email" autocomplete="email">
-
-        <label for="mensagem">Mensagem</label>
-        <textarea id="mensagem" name="mensagem" rows="4"></textarea>
-
-        <button type="submit" class="botao">Enviar</button>
-
-        <!-- Aqui o script mostra erros ou a confirmação -->
-        <p id="retorno" role="status" aria-live="polite"></p>
-      </form>
+    <section class="secao secao--escura" id="palestras" aria-labelledby="t-palestras">
+      <div class="container">
+        <h2 id="t-palestras"><span class="num">02</span> Palestras</h2>
+        <p class="intro">Quatro eixos de conteúdo. O tema final é ajustado ao seu evento e ao seu público.</p>
+        <div class="eixos">
+          <article class="eixo">
+            <h3>Comportamento humano e DISC</h3>
+            <p>Como as pessoas decidem, se comunicam e se relacionam, usando o DISC como mapa de perfil comportamental.</p>
+            <button class="botao botao--ouro" type="button" data-abrir-assistente data-tema="Comportamento humano e DISC">Quero essa palestra</button>
+          </article>
+          <article class="eixo">
+            <h3>Vendas e varejo</h3>
+            <p>Comportamento aplicado a quem vende e atende, com a visão de varejo estudada em Babson e a experiência dos livros de vendas.</p>
+            <button class="botao botao--ouro" type="button" data-abrir-assistente data-tema="Vendas e varejo">Quero essa palestra</button>
+          </article>
+          <article class="eixo">
+            <h3>Liderança</h3>
+            <p>Liderança estratégica para quem conduz pessoas, a partir do Programa Evolution em Liderança Estratégica.</p>
+            <button class="botao botao--ouro" type="button" data-abrir-assistente data-tema="Liderança">Quero essa palestra</button>
+          </article>
+          <article class="eixo">
+            <h3>Inteligência artificial aplicada</h3>
+            <p>IA aplicada ao trabalho das equipes, com a abordagem do EdusIA Instituto.</p>
+            <button class="botao botao--ouro" type="button" data-abrir-assistente data-tema="Inteligência artificial aplicada">Quero essa palestra</button>
+          </article>
+        </div>
+      </div>
     </section>
 
+    <section class="secao" id="credenciais" aria-labelledby="t-cred">
+      <div class="container">
+        <h2 id="t-cred"><span class="num">03</span> Credenciais</h2>
+        <ul class="grade-cred">
+          <li><strong>Master Coaching</strong><span>SLAC, Sociedade Latino-Americana de Coaching</span></li>
+          <li><strong>PNL</strong><span>Programação Neurolinguística</span></li>
+          <li><strong>Analista comportamental</strong><span>e analista em Inteligência Emocional</span></li>
+          <li><strong>Instituto Disney, Orlando (EUA)</strong><span>Abordagem em Criatividade Inspiradora</span></li>
+          <li><strong>Universidade Babson, Boston (EUA)</strong><span>Oportunidade do Varejo</span></li>
+          <li><strong>Evolution Brasil</strong><span>Diretor</span></li>
+          <li><strong>K.L.A Educação Empresarial</strong><span>Instrutor e Mentor</span></li>
+          <li><strong>FACESP</strong><span>Vice-Presidente Executivo</span></li>
+          <li><strong>Associação Comercial de Mococa</strong><span>Vice-Presidente</span></li>
+          <li><strong>Conselho Estadual de Saúde de SP</strong><span>Membro</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao secao--areia" id="livros" aria-labelledby="t-livros">
+      <div class="container">
+        <h2 id="t-livros"><span class="num">04</span> Livros</h2>
+        <ul class="livros">
+          <li>
+            <div class="capa" role="img" aria-label="Espaço reservado para a capa do livro Manual Completo do Empreendedorismo">[CAPA]</div>
+            <h3>Manual Completo do Empreendedorismo</h3><p>Coautor</p>
+          </li>
+          <li>
+            <div class="capa" role="img" aria-label="Espaço reservado para a capa do livro Como se Tornar um Campeão em Vendas">[CAPA]</div>
+            <h3>Como se Tornar um Campeão em Vendas</h3><p>Coautor</p>
+          </li>
+          <li>
+            <div class="capa" role="img" aria-label="Espaço reservado para a capa do livro Faça o que tem que ser feito">[CAPA]</div>
+            <h3>Faça o que tem que ser feito</h3><p>Autor</p>
+          </li>
+          <li>
+            <div class="capa" role="img" aria-label="Espaço reservado para a capa do livro O Poder do Comportamento Positivo">[CAPA]</div>
+            <h3>O Poder do Comportamento Positivo</h3><p>Autor</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="secao" id="cursos" aria-labelledby="t-cursos">
+      <div class="container">
+        <div class="cursos">
+          <div>
+            <h2 id="t-cursos"><span class="num">05</span> Cursos de IA</h2>
+            <p>Além da palestra: treinamento contínuo para sua equipe. O EdusIA Instituto, fundado por Eduardo, trabalha com DISC e IA aplicada.</p>
+          </div>
+          <a class="botao botao--ouro" href="https://www.edusiainstituto.com.br" target="_blank" rel="noopener noreferrer">Conhecer o EdusIA Instituto<span class="sr-only"> (abre em nova aba)</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao secao--escura" id="contato" aria-labelledby="t-contato">
+      <div class="container estreito">
+        <h2 id="t-contato"><span class="num">06</span> Contato</h2>
+        <p class="intro">Conte sobre o seu evento. A conversa começa direto no WhatsApp.</p>
+        <a class="botao botao--zap botao--grande" href="https://wa.me/5519991808312" target="_blank" rel="noopener noreferrer">
+          <svg class="icone" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-zap"/></svg>
+          WhatsApp (19) 99180-8312
+        </a>
+        <ul class="contatos">
+          <li><span>E-mail</span><a href="mailto:eduardocarvalho@edusia.com.br">eduardocarvalho@edusia.com.br</a></li>
+          <li><span>Instagram</span><a href="https://www.instagram.com/eduardo.carvalho.oficial" target="_blank" rel="noopener noreferrer">@eduardo.carvalho.oficial</a></li>
+          <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/eduardo-carvalho-edusia" target="_blank" rel="noopener noreferrer">linkedin.com/in/eduardo-carvalho-edusia</a></li>
+        </ul>
+        <p class="ou">Prefere responder umas perguntas rápidas? <button class="link-botao" type="button" data-abrir-assistente>Falar com o assistente</button></p>
+      </div>
+    </section>
   </main>
 
-  <!-- RODAPÉ: o ano é preenchido pelo JavaScript -->
   <footer class="rodape">
-    <p>&copy; <span id="ano"></span> Eduardo Carvalho · IA para Gestores na Prática. Todos os direitos reservados.</p>
+    <div class="container rodape__grade">
+      <p><strong>Eduardo Carvalho</strong> · Mococa/SP</p>
+      <nav aria-label="Links do rodapé">
+        <a href="https://wa.me/5519991808312" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="mailto:eduardocarvalho@edusia.com.br">E-mail</a>
+        <a href="https://www.instagram.com/eduardo.carvalho.oficial" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.linkedin.com/in/eduardo-carvalho-edusia" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.edusiainstituto.com.br" target="_blank" rel="noopener noreferrer">EdusIA Instituto</a>
+      </nav>
+    </div>
   </footer>
 
-  <!-- Liga o arquivo de comportamento (JavaScript) -->
+  <!-- Botões flutuantes: assistente (esquerda) e WhatsApp (direita) -->
+  <div class="flutuantes">
+    <button class="flut flut--assist" type="button" data-abrir-assistente aria-haspopup="dialog">Assistente</button>
+    <a class="flut flut--zap" href="https://wa.me/5519991808312" target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp">
+      <svg class="icone" aria-hidden="true" viewBox="0 0 24 24"><use href="#i-zap"/></svg>
+    </a>
+  </div>
+
+  <!-- Widget do assistente (fluxo guiado, sem IA e sem backend) -->
+  <section class="assistente" id="assistente" role="dialog" aria-modal="false" aria-labelledby="assist-titulo" hidden>
+    <header class="assistente__topo">
+      <h2 id="assist-titulo">Assistente de contato</h2>
+      <button class="assistente__fechar" type="button" aria-label="Fechar assistente">×</button>
+    </header>
+    <div class="assistente__corpo" id="assist-corpo" role="log" aria-live="polite"></div>
+    <div class="assistente__entrada" id="assist-entrada"></div>
+    <p class="assistente__priv">Suas respostas ficam só neste aparelho: nada é guardado nem enviado por este assistente.</p>
+  </section>
+
+  <!-- Ícone do WhatsApp reutilizável -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-zap" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2Zm0 18.1c-1.5 0-2.97-.4-4.25-1.16l-.3-.18-3.12.82.83-3.04-.2-.31A8.1 8.1 0 1 1 12.04 20.1Zm4.45-6.06c-.24-.12-1.44-.71-1.66-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.77.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.43-1.34-1.67-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.32-.75-1.8-.2-.47-.4-.41-.55-.42h-.47c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.1 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28Z"/></symbol>
+  </svg>
+
   <script src="script.js"></script>
 </body>
 </html>

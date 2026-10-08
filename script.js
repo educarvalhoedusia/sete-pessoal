@@ -1,76 +1,144 @@
-// ===== Rodapé: coloca o ano atual automaticamente =====
-document.getElementById("ano").textContent = new Date().getFullYear();
+// Assistente de qualificação: fluxo guiado, sem IA, sem backend e sem guardar dados.
+// No fim, monta uma mensagem e abre o WhatsApp com o texto pré-preenchido (o visitante revisa e envia).
+(function () {
+  'use strict';
 
-// ===== Formulário de contato =====
-// Pegamos os elementos da página que vamos usar
-const formulario = document.getElementById("formulario");
-const campoNome = document.getElementById("nome");
-const campoEmail = document.getElementById("email");
-const campoMensagem = document.getElementById("mensagem");
-const retorno = document.getElementById("retorno");
+  var NUMERO = '5519991808312';
+  var TEMAS = ['Comportamento humano e DISC', 'Vendas e varejo', 'Liderança', 'Inteligência artificial aplicada', 'Ainda não sei'];
 
-// Verifica se o e-mail tem o formato texto@dominio.ext
-function emailValido(email) {
-  const padrao = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return padrao.test(email);
-}
+  // Passos do fluxo: tipo "opcoes" mostra botões; tipo "texto" mostra um campo livre.
+  var PASSOS = [
+    { chave: 'evento', pergunta: 'Que tipo de evento você está organizando?', tipo: 'opcoes', opcoes: ['Empresa', 'Associação/entidade', 'Congresso', 'Outro'] },
+    { chave: 'tema', pergunta: 'Qual o tema de interesse?', tipo: 'opcoes', opcoes: TEMAS },
+    { chave: 'local', pergunta: 'Cidade e data prevista?', tipo: 'texto', dica: 'Ex.: Campinas, outubro de 2026' },
+    { chave: 'publico', pergunta: 'Quantas pessoas, aproximadamente?', tipo: 'texto', dica: 'Ex.: 150' },
+    { chave: 'nome', pergunta: 'Para finalizar: seu nome e a empresa/entidade?', tipo: 'texto', dica: 'Ex.: Maria Souza, Associação X' }
+  ];
 
-// Mostra uma mensagem na tela; "tipo" pode ser "erro" ou "sucesso"
-function mostrarMensagem(texto, tipo) {
-  retorno.textContent = texto;
-  retorno.className = tipo; // aplica a cor definida no CSS
-}
+  var painel = document.getElementById('assistente');
+  var corpo = document.getElementById('assist-corpo');
+  var entrada = document.getElementById('assist-entrada');
+  var respostas = {};
+  var passo = 0;
+  var ultimoGatilho = null;
 
-// Remove a marcação vermelha de todos os campos
-function limparErros() {
-  [campoNome, campoEmail, campoMensagem].forEach(function (campo) {
-    campo.classList.remove("invalido");
+  function el(tag, classe, texto) {
+    var e = document.createElement(tag);
+    if (classe) e.className = classe;
+    if (texto) e.textContent = texto;
+    return e;
+  }
+
+  function mensagem(texto, quem) {
+    corpo.appendChild(el('div', 'msg msg--' + quem, texto));
+    corpo.scrollTop = corpo.scrollHeight;
+  }
+
+  // Monta o texto final que será pré-preenchido no WhatsApp
+  function montarTexto() {
+    return [
+      'Olá, Eduardo! Vim pelo seu site e gostaria de falar sobre uma palestra.',
+      '',
+      '• Tipo de evento: ' + respostas.evento,
+      '• Tema de interesse: ' + respostas.tema,
+      '• Cidade e data prevista: ' + respostas.local,
+      '• Público aproximado: ' + respostas.publico,
+      '• Nome e empresa/entidade: ' + respostas.nome,
+      '',
+      'Aguardo seu retorno.'
+    ].join('\n');
+  }
+
+  function responder(valor) {
+    var p = PASSOS[passo];
+    respostas[p.chave] = valor;
+    mensagem(valor, 'user');
+    passo++;
+    proximo();
+  }
+
+  function finalizar() {
+    var texto = montarTexto();
+    mensagem('Pronto! Revise a mensagem abaixo. Ao tocar no botão, o WhatsApp abre com ela preenchida e você decide se envia.', 'bot');
+    mensagem(texto, 'bot');
+    entrada.innerHTML = '';
+    var link = el('a', 'botao botao--zap', 'Abrir no WhatsApp');
+    link.href = 'https://wa.me/' + NUMERO + '?text=' + encodeURIComponent(texto);
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    var reiniciar = el('button', 'opcao', 'Recomeçar');
+    reiniciar.type = 'button';
+    reiniciar.addEventListener('click', function () { iniciar(); });
+    entrada.appendChild(link);
+    entrada.appendChild(reiniciar);
+    link.focus();
+  }
+
+  function proximo() {
+    // Pula perguntas já respondidas (ex.: tema vindo do botão "Quero essa palestra")
+    while (passo < PASSOS.length && respostas[PASSOS[passo].chave]) passo++;
+    if (passo >= PASSOS.length) return finalizar();
+
+    var p = PASSOS[passo];
+    mensagem(p.pergunta, 'bot');
+    entrada.innerHTML = '';
+
+    if (p.tipo === 'opcoes') {
+      p.opcoes.forEach(function (o) {
+        var b = el('button', 'opcao', o);
+        b.type = 'button';
+        b.addEventListener('click', function () { responder(o); });
+        entrada.appendChild(b);
+      });
+      entrada.firstChild.focus();
+    } else {
+      var f = el('form');
+      var campo = el('input');
+      campo.type = 'text';
+      campo.maxLength = 120;
+      campo.placeholder = p.dica;
+      campo.setAttribute('aria-label', p.pergunta);
+      campo.autocomplete = 'off';
+      var ok = el('button', 'botao botao--ouro', 'Enviar');
+      ok.type = 'submit';
+      f.appendChild(campo);
+      f.appendChild(ok);
+      f.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var v = campo.value.trim();
+        if (v) responder(v); else campo.focus();
+      });
+      entrada.appendChild(f);
+      campo.focus();
+    }
+  }
+
+  function iniciar(temaInicial) {
+    respostas = {};
+    passo = 0;
+    corpo.innerHTML = '';
+    if (temaInicial) respostas.tema = temaInicial;
+    mensagem('Olá! Vou fazer algumas perguntas rápidas para montar sua mensagem para o Eduardo.', 'bot');
+    if (temaInicial) mensagem('Tema escolhido: ' + temaInicial, 'bot');
+    proximo();
+  }
+
+  function abrir(gatilho, tema) {
+    ultimoGatilho = gatilho;
+    painel.hidden = false;
+    iniciar(tema);
+  }
+
+  function fechar() {
+    painel.hidden = true;
+    if (ultimoGatilho) ultimoGatilho.focus();
+  }
+
+  document.querySelectorAll('[data-abrir-assistente]').forEach(function (b) {
+    b.addEventListener('click', function () { abrir(b, b.getAttribute('data-tema')); });
   });
-}
-
-// Roda quando o usuário clica em "Enviar"
-formulario.addEventListener("submit", function (evento) {
-  // Impede o comportamento padrão (recarregar a página)
-  evento.preventDefault();
-  limparErros();
-
-  // trim() tira espaços do começo e do fim do texto
-  const nome = campoNome.value.trim();
-  const email = campoEmail.value.trim();
-  const mensagem = campoMensagem.value.trim();
-
-  // Regra 1: nenhum campo pode ficar vazio
-  if (nome === "") {
-    campoNome.classList.add("invalido");
-    campoNome.focus();
-    mostrarMensagem("Por favor, preencha o seu nome.", "erro");
-    return; // para aqui e não continua
-  }
-
-  if (email === "") {
-    campoEmail.classList.add("invalido");
-    campoEmail.focus();
-    mostrarMensagem("Por favor, preencha o seu e-mail.", "erro");
-    return;
-  }
-
-  // Regra 2: o e-mail precisa ter um formato válido
-  if (!emailValido(email)) {
-    campoEmail.classList.add("invalido");
-    campoEmail.focus();
-    mostrarMensagem("Esse e-mail parece inválido. Confira e tente de novo.", "erro");
-    return;
-  }
-
-  if (mensagem === "") {
-    campoMensagem.classList.add("invalido");
-    campoMensagem.focus();
-    mostrarMensagem("Por favor, escreva uma mensagem.", "erro");
-    return;
-  }
-
-  // Tudo certo: mostra a confirmação e limpa o formulário.
-  // Atenção: nenhum dado é enviado para lugar nenhum.
-  mostrarMensagem("Obrigado, " + nome + "! Sua mensagem foi registrada.", "sucesso");
-  formulario.reset();
-});
+  painel.querySelector('.assistente__fechar').addEventListener('click', fechar);
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Escape' && !painel.hidden) fechar();
+  });
+})();
